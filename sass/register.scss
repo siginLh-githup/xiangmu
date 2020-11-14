@@ -1,0 +1,200 @@
+$width:992px;
+$auto:0 auto;
+//header 头部
+body{
+    background: #f8f8f8;
+}
+#header{
+    min-height: 88px;
+    .container{
+        width:$width;
+        margin:$auto;
+        h1{
+            width: 190px;
+            height: 88px;
+            background: url(../images/sprite.png)no-repeat,24px 24px;
+            float: left;
+            padding-left: 24px;
+        }
+        p{
+            float: left;
+            font-size: 18px;
+            line-height: 88px;
+            color: #666;
+        }
+        span{
+            font-size: 12px;
+            float: right;
+            display: block;
+            padding-top: 63px;
+            a{
+                color: #666;
+                &:hover{
+                    color:red;
+                }
+            }
+           
+        }
+    }
+}
+#contanier-filud{
+    #container{
+        border-top: 3px solid #f90;
+        border-left: 1px solid #cacaca;
+        border-bottom: 1px solid #cacaca;
+        border-right: 1px solid #cacaca;
+        width: $width;
+        margin: $auto;
+        background: #fff;
+        .register{
+            width:380px;
+            margin: $auto;
+            .gift{
+                padding-top: 55px;
+                font-size: 14px;
+                line-height: 17px;
+                 padding-left: 2px;
+                 margin-bottom: 17px;
+                 a{
+                    color:#000;
+                    em{
+                     color: #f40;
+                 }
+                 }
+                 
+                 span{
+                     display:inline-block;
+                     width: 19px;
+                     height: 24px;
+                    background: url(../images/sprite.png)no-repeat -75px -86px;
+                 }
+            }
+            .input{
+                width: 380px;
+                height: 38px;
+                border: 1px solid #cacaca;
+                margin-top:25px;
+                line-height: 38px;
+                position: relative;
+                span{
+                    padding-left: 11px;
+                }
+                input[type]{
+                text-align: left;
+                text-indent: 10px;
+                }
+                .true{
+                    display: block;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                }
+            }
+            .tip{
+                color: #cecece;
+                display:none;
+            }
+.lv{
+    display: none;
+    span:not(.first){
+        display: inline-block;
+        width: 50px;
+        height: 16px;
+        background: #cacaca;
+        margin-top: 10px;
+        text-align: center;
+        color: #fff;
+    }
+}
+            div:nth-of-type(2){
+                em{
+                    text-align: center;
+                    line-height: 38px;
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    right: 0;
+                    display:block;
+                    position: $auto;
+                    width: 150px;
+                    height: 38px;
+                    background: #f5f5f5;
+                }
+            }
+            button{
+                width: 380px;
+                height: 40px;
+                background: #f60;
+                margin:35px 0 5px ;
+                font-size: 20px;
+                color: #fff;
+            }
+            .enterprise{
+                color: #f60;
+                font-size: 14px;
+                height: 21px;   
+                padding-bottom: 36px;
+                span{
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    background: url(../images/sprite.png)no-repeat -141px -88px;
+                }
+            }
+        }
+    }
+}
+#footerCon{
+    .container{
+        padding-top:19px ;
+        width:$width;
+        margin:$auto;
+        .ous-new{
+            height: 20px;
+             padding:0 0 5px 0 ;
+             margin: $auto;
+             text-align: center;
+            span{
+                padding:0 5px;
+                color: #666;
+            } 
+            &:nth-child(3){
+               
+                span{
+                     color: #000;
+                }
+                span:nth-child(3){
+                    display: inline-block;
+                    width: 16px;
+                    height: 20px;
+                    background: url(../images/gwab-icon.png)no-repeat 3px 2px;
+                }
+            }
+            &:nth-child(4){
+                padding-top: 5px;
+                span{
+                    color: #000;
+               }
+            }
+            &:nth-child(5){
+                span{
+                    color: #000;
+               }
+            }
+        }
+        .pic{
+            display: inline-block;
+            width: 65px;
+            height: 24px;
+            margin: 8px;
+            &:last-child{
+                img{
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../css/detailpage.css">
+</head>
+
+<body>
+    <header class="headerCon">
+        <div class="container">
+            <h1 class="logo">
+                <img src="../images/159600587729191161.png" alt="">
+            </h1>
+            <p class="gz">
+                <span class="iconfont icon-erweima"></span>
+                关注
+            </p>
+            <div class="center">
+                <div class="search">
+                    <span class="iconfont icon-sousuosearch82"></span>
+                    <input type="text" placeholder="抢199减100元神券">
+                    <p>搜索</p>
+                </div>
+                <ul class="search-li">
+                    <li>洗衣液</li>
+                    <li>|</li>
+                    <li>白酒</li>
+                    <li>|</li>
+                    <li><em>肥牛卷</em></li>
+                    <li>|</li>
+                    <li><em>羊肉卷</em></li>
+                    <li>|</li>
+                    <li>零食</li>
+                    <li>|</li>
+                    <li>茅台</li>
+                    <li>|</li>
+                    <li>牛肉</li>
+                    <li>|</li>
+                    <li>抽纸</li>
+                </ul>
+            </div>
+            <img src="../images/top-code2.jpg" alt="" class="pic11">
+    </header>
+
+    <div id="zoomBox">
+        <!-- <div id="midArea">
+                <img src="img/m01.jpg">
+                <div id="zoom"></div>
+            </div>
+            <div id="bigArea">
+                <img src="img/m01.jpg">
+            </div>
+            <div id="smallArea">
+                <img src=""><img src="">
+            </div> -->
+    </div>
+    <div class="banxin">
+        <div class="txt">
+            <h4 class="baiqi">
+                <!-- <p> 麦富迪猫零食猫咪恋肉粒包营养增肥发腮猫罐头湿粮包湿粮85g*12包 猫咪恋混合装</p> -->
+                <span>营养增肥发腮猫罐头湿粮包湿粮85g*12包</span>
+            </h4>
+            <div class="quan">
+                <!-- <em>单价：</em>
+                <span>￥99</span> -->
+            </div>
+            <img src="../images/aaaa.png" alt="">
+            <img src="../images/bbb.png" alt="">
+            <div class="kw">
+                <span>猫咪恋海洋鱼</span>
+                <span>猫咪恋海洋鱼</span>
+                <span>猫咪恋海洋鱼</span>
+            </div>
+            <div class="btn1">
+                <span class="jian">-</span><input type="text" value="1"><span class="jia">+</span>
+                <input type="button" value="加入购物车" id="addBtn">
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <!-- <script src="../js/cartlist.js"></script> -->
+    <script>
+        $.get("http://jx.xuzhixiang.top/ap/api/detail.php" + window.location.search, {
+
+        }, data => {
+            console.log(data);
+            let str = "";
+            str += `
+                        <div id="midArea">
+                            <img src="${data.data.pimg}">
+                            <div id="zoom"></div>
+                        </div>
+                        <div id="bigArea">
+                            <img src="${data.data.pimg}">
+                        </div>
+                        `;
+            var zoomBox = document.querySelector("#zoomBox");
+            console.log(zoomBox);
+            zoomBox.innerHTML = str
+
+            console.log($("#zoom"))
+            $("#midArea").mouseenter(function () {
+                $("#zoom").show()
+            }).mouseleave(function () {
+                $("#zoom").hide()
+            }).mousemove(function (ev) {
+                var l = ev.pageX - $(this).offset().left - 87.5;
+                var t = ev.pageY - $(this).offset().top - 87.5
+                if (l <= 0) {
+                    l = 0;
+                }
+                if (l >= 175) {
+                    l = 175;
+                }
+                if (t <= 0) {
+                    t = 0;
+                }
+                if (t >= 175) {
+                    t = 175;
+                }
+                //改变遮罩层位置
+                $("#zoom").css({
+                    left: l,
+                    top: t
+                })
+
+
+                //同时放大图片位置，四倍于遮罩成  注意反方向的
+                $("#bigArea img").css({
+                    left: -2 * l,
+                    top: -2 * t
+                })
+            })
+            $("#zoom").hover(function () {
+                $("#bigArea").show()
+            })
+            $("#zoom").mouseout(function () {
+                $("#bigArea").hide()
+            })
+
+
+        })
+
+        $.get('http://jx.xuzhixiang.top/ap/api/detail.php' + window.location.search).then(result => {
+            console.log(result)
+            var str = `
+                <em>单价：</em>
+                <span>￥${result.data.pprice}</span>
+            `
+            var qwq = `
+            <p>${result.data.pname}</p>
+            `
+            // $("#contier").html(str)
+            console.log($(".baiqi"))
+            $(".baiqi").html(qwq)
+            $(".quan").html(str)
+
+
+            var btn1 = document.querySelector("#addBtn");
+            console.log();
+            var oDetail = document.querySelector(".btn1");
+            console.log(oDetail);
+            let minus = oDetail.getElementsByTagName("span")[0];
+            console.log(minus)
+            let plus = oDetail.getElementsByTagName("span")[1];
+            let oTxt = oDetail.getElementsByTagName("input")[0];
+            minus.onclick = function () {
+                oTxt.value--;
+                if (oTxt.value < 1) {
+                    oTxt.value = 1;
+                }
+            }
+            plus.onclick = function () {
+                oTxt.value++;
+            }
+
+            oTxt.onchange = function () {
+                if (oTxt.value < 1) {
+                    oTxt.value = 1;
+                }
+            }
+
+
+
+            // btn1.onclick = function () {
+            //     var token = JSON.parse(sessionStorage.getItem("token"));
+            //     console.log(token);
+            //     if (token) {
+            //         window.location.href = "http://localhost:8080/html/cartList.html?username=" + "&id=" + token.uid;
+            //     } else {
+            //         alert("请登录")
+            //         location.href = "login.html"
+            //     }
+            // }
+            btn1.onclick = function () {
+                var token = JSON.parse(sessionStorage.getItem("token"));
+                var pid = window.location.search.slice(4)
+                var uid = JSON.parse(sessionStorage.getItem('token')).uid
+                $.ajax({
+                    url: 'http://jx.xuzhixiang.top/ap/api/add-product.php',
+                    method: 'get',
+                    data: {
+                        uid: uid,
+                        pid: pid,
+                        pnum: 1
+                    }
+                }).then(result => {
+                    if (token) {
+                        window.location.href = "http://localhost:8080/html/cartList.html?username=" + "&id=" + token.uid;
+                    } else {
+                        alert("请登录")
+                        location.href = "login.html"
+                    }
+                })
+                console.log(token);
+                // if (token) {
+                //     window.location.href = "http://localhost:8080/html/cartList.html?username=" + "&id=" + token.uid;
+                // } else {
+                //     alert("请登录")
+                //     location.href = "login.html"
+                // }
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>

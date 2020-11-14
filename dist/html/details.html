@@ -1,0 +1,174 @@
+<div id="box">
+    <div class="header">
+
+
+
+
+
+    </div>
+    <!-- <ul class="details">
+
+    </ul> -->
+    <div class="details">
+        <div class="details-left">
+            <img id="Img" src="" alt="">
+            <div class="small"></div>
+        </div>
+        <div class="details-right">
+            <div class="big">
+                <img id="Img" src="" alt="">
+            </div>
+            <p><span>11111</span>前置3200万追焦双摄 50倍潜望式变焦四摄 麒麟985 5G SoC 8GB+128GB 全网通版（亮黑色）</p>
+            <a href="">
+                【品牌盛典】①享6期免息②整点赠不锈钢保温杯③限量赠50元花币卡④赠精美礼券|以旧换新最高补贴1000元，点击参与>>>
+            </a>
+            <div class="details-right-cent">
+                <div>
+                    价格: <span>1111</span>
+                </div>
+                <div>
+                    促销：买什么都送东西！！！
+                </div>
+            </div>
+
+            <ul>
+                <li>选择颜色</li>
+                <li>黑色</li>
+                <li>白色</li>
+                <li>紫色色</li>
+                <li>黄色</li>
+                <li>绿色</li>
+            </ul>
+            <div class="details-right-bottom">
+                <span>-</span>
+                <input class="txt" type="text" value="1">
+                <span>+</span>
+                <input class="btn" type="button" value="加入购物车">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    /* console.log(location.search); */
+
+    var str = location.search;
+    var arr = str.split("?");
+    arr = arr[1];
+    Number(arr);
+    //console.log(arr)
+    $.get("http://jx.xuzhixiang.top/ap/api/detail.php", {
+        id: arr
+    }, data => {
+        console.log(data.data)
+        /* var str = "";
+
+        str += `
+                <li>
+                    <img Id="${data.data.pid}" src="${data.data.pimg}">
+                    <p>${data.data.pname}</p>
+                    <p>${data.data.pdesc}</p>
+                    <span>¥${data.data.pprice}</span>
+                    </li>
+                `
+
+
+        $(".details").html(str); */
+        /* $(".details-left img").src("data.data.pimg"); */
+        var aImg = document.querySelectorAll("#Img");
+        console.log(aImg, data.data.pimg)
+        aImg[0].src = "" + data.data.pimg;
+        aImg[1].src = "" + data.data.pimg;
+        //small小  
+        $(".details-left").hover(function () {
+            $(".big").show();
+            $(".small").show();
+        }, function () {
+            $(".big").hide();
+            $(".small").hide();
+        });
+        $(".details-left").mousemove(function (e) {
+            //var eve = e || event;
+            var l = e.pageX - $(".details-left").offset().left - $(".small").outerHeight() / 2;
+            var t = e.pageY - $(".details-left").offset().top - $(".small").outerWidth() / 2;
+            if (l < 0) {
+                l = 0;
+            }
+            if (t < 0) {
+                t = 0;
+            }
+            if (l > $(".details-left").offset().left - $(".small").outerWidth() / 2) {
+                l = $(".details-left").offset().left - $(".small").outerWidth() / 2
+            }
+            if (t > 300) {
+                t = 300
+            }
+
+            //console.log($(".small").outerHeight)
+
+            $(".small").css({
+                left: l,
+                top: t
+            })
+            $(".big img").css({
+                left: -3 * l,
+                top: -3 * t
+            })
+        })
+        $(".details-right p span").html(data.data.pname);
+        $(".details-right-cent div span").html(data.data.pprice);
+        $(".details-right-bottom span").eq(1).click(function () {
+            var sun = $(".txt").val();
+            if (sun >= 99) {
+                sun = 98;
+            }
+            sun++;
+            $(".txt").val(sun);
+            return false;
+        })
+        $(".details-right-bottom span").eq(0).click(function () {
+            var sun = $(".txt").val();
+            sun--;
+            if (sun <= 1) {
+                sun = 1;
+            }
+            $(".txt").val(sun);
+            return false;
+        })
+        $(".txt").change(function () {
+            if ($(".txt").val() <= 1) {
+                $(".txt").val(1);
+            }
+            if ($(".txt").val() >= 99) {
+                $(".txt").val(99);
+            }
+        })
+        var Id = data.data.pid
+
+        $(".btn").click(function () {
+            var Val = $(".txt").val();
+            console.log(Id, Val)
+            /* var name =
+                location.href = "购物车页面.html?" + Id + "/" + Val */
+            /* location.href = "详情页.html?" + nameid */
+            $.get("http://jx.xuzhixiang.top/ap/api/add-product.php", {
+                uid: 38559,
+                pid: Id,
+                pnum: Val
+            }, data => {
+                console.log(data)
+            }
+
+            )
+            location.href = "购物车页面.html?" + Id
+        })
+
+    })
+</script>
+<script src="./js/bootstrap.js"></script>
+<script src="./js/startmove.js"></script>
+<!-- <script src="./js/swiper-bundle.m.js"></script> -->
+<script src="./js/shuju.js"></script>
+
+</body>
+
+</html>

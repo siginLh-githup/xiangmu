@@ -1,0 +1,46 @@
+/* 取消页面元素中带有的空白 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+/* 设置字体 字号 */
+body{ font-family:"微软雅黑";font-size:12px;}
+/* 取消列表符号 */
+ul,li,ol{list-style: none;}
+/* 取消下划线 */
+a,u{text-decoration: none;}
+/* 设置a的颜色 */
+a{color: #333;}
+/* 取消加粗 */
+h1,h2,h3,h4,h5,h6,strong,b{font-weight: normal;}
+/* 取消倾斜 */
+em,i{font-style: normal;}
+/* 取消input的边框、背景、点击时蓝色边框*/
+input,button{border: 0;background: none;outline: none;}
+/* 解决图片3px */
+img{display: block;}
+
+/* 左浮动 */
+.fl{
+    float: left;
+}
+/* 右浮动 */
+.fr{
+    float: right;
+}
+
+/* 解决高度塌陷 */
+.clean:after{
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    /* 内容超出隐藏 */
+    overflow: hidden;
+    /* 当前伪元素隐藏 */
+    visibility: hidden;
+}
+/* 兼容ie */
+.clean{
+    zoom: 1;
+}
+
+
+

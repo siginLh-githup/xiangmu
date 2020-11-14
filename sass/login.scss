@@ -1,0 +1,232 @@
+$width:970px;
+$auto:0 auto;
+#container-filud{
+    min-height:100px;
+    .container{
+        width: $width;
+        margin:$auto ;
+        h1{
+            float: left;
+            width: 189px;
+            height: 100px;
+            margin-top:20px ;
+        }
+        #txt{
+            border: 1px solid #fecd66;
+            display: block;
+            width: 758px;
+            height: 26px;
+            float: right;
+            line-height: 26px;
+            font-size: 12px;
+            padding: 0 5px;
+            margin-top: 37px;
+        }
+        p{
+            float: right;
+            padding-top: 8px;
+            span{
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+            }
+            a:hover{
+                color: #ff6600;
+            }
+        }
+    }
+}
+
+.contaniner-fliud1{
+width: 100%;
+height: 570px;
+ background:#5000ee ;
+    .container1{
+        height: 570px;
+        width: $width;
+        margin: $auto;
+        background: url(../images/160493686106574478.png)no-repeat -800px 0;
+    }
+    .login{
+        position: relative;
+        width: 380px;
+        height: 430px;
+        background: #fff;
+        float: right;
+        margin-top: 50px;
+        .options{
+            width: 367px;
+            height: 50px;
+            border-bottom:1px solid #cecece;
+            margin-bottom: 40px;
+            li{
+                line-height: 50px;
+                font-size: 16px;
+                color: #666;
+                text-align: center;
+                float: left;
+            }
+            .options-t{
+                width: 179px;
+                text-align: center;
+                .span{
+                    display: block;
+                    width: 70px;
+                    height: 4px;
+                    background:#ff6600;
+                    margin: -4px auto 0 auto;
+                } 
+            }
+        }
+        h2{
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: $auto;
+            display: none;
+            #pic1{
+                width: 140px;
+                height: 140px;
+                position: absolute;
+            }
+        }
+        h3{
+            position:absolute;
+            right: 15px;
+            top: 60px;
+            display: none;
+        }
+        .input{
+            width: 312px;
+            height: 40px;
+            border: 1px solid #ccc;
+            margin:24px 24px;
+            span{
+                width: 36px;
+                height: 38px;
+                float: left;
+            }
+            input[type]{
+                width:276px;
+                height: 38px;
+                float: left;
+            }
+    
+        }
+        .other{
+            width: 312px;
+            height: 20px;
+            margin: 0 auto;
+            p:nth-child(1){
+                float: left;
+                &:hover a{
+                    color: #ff6600;
+                }
+                color: #666;
+            }
+            
+            p:nth-child(2){
+                float: right;
+                &:hover a{
+                    color: #ff6600;
+                }
+                color: #666;
+            }
+          
+        }
+        .btn{
+            width: 312px;
+            height: 40px;
+            background:#ff6600;
+            display: block;
+            margin:20px auto;
+            font-size: 20px;
+            color: #fff;
+            font-weight: 900;
+            &:hover{
+                background: red;
+            }
+        }
+        p{
+            margin-top: 18px;
+            text-align: center;
+            font-size: 12px;
+            a{
+                color:#ff6600;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+        .other-login{
+            text-align: center;
+            background:url(../images/aaaaaa-1.png)no-repeat center ;
+        }
+        .login-other{
+            width: 312px;
+            margin: 5px auto;
+            li{
+                height: 16px;
+                float: left;
+                padding: 0 2px;
+                span{
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
+#footerCon{
+    .container{
+        padding-top:19px ;
+        width:$width;
+        margin:$auto;
+        .ous-new{
+            height: 20px;
+             padding:0 0 5px 0 ;
+             margin: $auto;
+             text-align: center;
+            span{
+                padding:0 5px;
+                color: #666;
+            } 
+            &:nth-child(3){
+               
+                span{
+                     color: #000;
+                }
+                span:nth-child(3){
+                    display: inline-block;
+                    width: 16px;
+                    height: 20px;
+                    background: url(../images/gwab-icon.png)no-repeat 3px 2px;
+                }
+            }
+            &:nth-child(4){
+                padding-top: 5px;
+                span{
+                    color: #000;
+               }
+            }
+            &:nth-child(5){
+                span{
+                    color: #000;
+               }
+            }
+        }
+        .pic{
+            display: inline-block;
+            width: 65px;
+            height: 24px;
+            margin: 8px;
+            &:last-child{
+                img{
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+}

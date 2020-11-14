@@ -1,0 +1,66 @@
+.zhong{
+    width: 100%;
+  }
+  th{
+    line-height: 30px;
+  }
+  #carNum{
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+    color: aqua;
+  }
+  .ww{
+      width: 1200px;
+      height: 50px;
+      background: rgb(243,243,243);
+      margin:0 auto;
+  }
+  .ww p{
+      float: left;
+      line-height: 50px;
+  }
+  .ww input{
+      display: block;
+      float: left;
+      margin-left: 20px;
+      margin-top: 20px;
+  }
+  .ww p:nth-child(1){
+      // margin-left: 5px;
+      text-indent: 10px;
+  }
+  .ww p:nth-child(2){
+      margin-left: 127px;
+  }
+  .ww p:nth-child(3){
+      margin-left: 490px;
+  }
+  .ww p:nth-child(4){
+      margin-left: 100px;
+  }
+  .ww p:nth-child(5){
+      margin-left: 90px;
+  }
+  .ww p:nth-child(6){
+      margin-left: 130px;
+  }
+  
+  #sum {
+      width: 150px;
+      height: 40px;
+      background: #F0AD4E;
+      font-size: 25px;
+      color: aliceblue;
+      margin-left: 1000px;
+  }
+  
+  #otr{
+    width: 1200px;
+    margin: 0 auto;
+  }
+  
+  #otr ul li{
+    float: left;
+  }
+  

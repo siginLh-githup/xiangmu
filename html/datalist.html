@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            display: block;
+            border: none;
+        }
+
+        #zoomBox {
+            position: relative;
+            width: 400px;
+            border: 1px solid #cecece;
+        }
+
+        #midArea {
+            width: 400px;
+            height: 400px;
+        }
+
+        #zoom {
+            display: none;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            opacity: 0.3;
+            cursor: move;
+        }
+
+        #midArea img {
+            width: 400px;
+            height: 400px;
+        }
+
+        #bigArea {
+            display: none;
+            position: absolute;
+            left: 400px;
+            top: -1px;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            border: 1px solid #cecece;
+        }
+
+        #bigArea img {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="zoomBox">
+        <!-- <div id="midArea">
+            <img src="img/m01.jpg">
+            <div id="zoom"></div>
+        </div>
+        <div id="bigArea">
+            <img src="img/m01.jpg">
+        </div>
+        <div id="smallArea">
+            <img src=""><img src="">
+        </div> -->
+        <div class="xiaotu">
+            <ul>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <script>
+        console.log($("div"));
+        $.get("http://jx.xuzhixiang.top/ap/api/productlist.php", {
+            uid: 20201111
+        }, data => {
+            console.log(data);
+            let prodId = window.location.search.split("=")[1];
+            console.log(prodId);
+            let str = "";
+            str += `
+            <div id="midArea">
+                    <img src="${data.data.pimg}">
+                    <div id="zoom"></div>
+                </div>
+                <div id="bigArea"> 
+                    <img src="${data.data.pimg}">
+                </div>
+                <div id="smallArea">
+                    <img src=""><img src="">
+            </div>
+            `;
+            console.log
+            var zoomBox = document.querySelector("#zoomBox");
+            zoomBox.innerHTML = str;
+        })
+
+        function get(id) {
+            return document.getElementById(id);
+        }
+        function Zoom() {
+            this.zoomBox = get("zoomBox");
+            this.midArea = get("midArea");
+            console.log(midArea)
+            this.midImg = this.midArea.children[0];
+            this.zoom = get("zoom");
+            this.bigArea = get("bigArea");
+            this.bigImg = this.bigArea.children[0];
+        }
+        Zoom.prototype.start = function () {
+            this.midArea.onmouseover = () => {
+                this.zoom.style.display = "block";
+                this.bigArea.style.display = "block";
+            }
+            this.midArea.onmouseout = () => {
+                this.zoom.style.display = "none";
+                this.bigArea.style.display = "none";
+            }
+            this.midArea.onmousemove = (e) => {
+                let evt = e || event;
+                /* let x = evt.offsetX;
+                let y = evt.offsetY; */
+                let x = evt.pageX - this.zoomBox.offsetLeft;
+                let y = evt.pageY - this.zoomBox.offsetTop;
+
+                let l = x - this.zoom.offsetWidth / 2;
+                let t = y - this.zoom.offsetHeight / 2;
+
+                let mw = this.zoomBox.offsetWidth - this.zoom.offsetWidth;
+                let mh = this.zoomBox.offsetHeight - this.zoom.offsetHeight;
+
+                l = l <= 0 ? 0 : l >= mw ? mw : l;
+                t = t <= 0 ? 0 : t >= mh ? mh : t;
+
+
+                this.zoom.style.left = l + "px";
+                this.zoom.style.top = t + "px";
+
+
+                this.bigImg.style.left = - this.zoom.offsetLeft * this.bigImg.offsetWidth / this.midImg.offsetWidth + "px";
+                this.bigImg.style.top = - this.zoom.offsetTop * this.bigImg.offsetHeight / this.midImg.offsetHeight + "px";
+
+
+            }
+        }
+
+        let zoom = new Zoom();
+        zoom.start();
+    </script>
+</body>
+
+</html>
